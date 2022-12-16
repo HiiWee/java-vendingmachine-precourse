@@ -1,4 +1,4 @@
-package vendingmachine;
+package vendingmachine.domain.enums;
 
 public enum Coin {
     COIN_500(500),
