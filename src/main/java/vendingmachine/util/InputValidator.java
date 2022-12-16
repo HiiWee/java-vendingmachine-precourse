@@ -7,10 +7,11 @@ public class InputValidator {
     private InputValidator() {
     }
 
-    public static void validateMachinePrice(final String userInput) {
+    public static int validateMachinePrice(final String userInput) {
         if (!isNumeric(userInput)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMERIC);
         }
+        return Integer.parseInt(userInput);
     }
 
     private static boolean isNumeric(final String userInput) {

@@ -1,11 +1,11 @@
 package vendingmachine.domain;
 
 public class VendingMachine {
-    private final Coins leftCoins;
+    private final Coins coins;
     private final Products sellProducts;
 
-    public VendingMachine(final Coins leftCoins, final Products sellProducts) {
-        this.leftCoins = leftCoins;
+    public VendingMachine(final Coins coins, final Products sellProducts) {
+        this.coins = coins;
         this.sellProducts = sellProducts;
     }
 }
