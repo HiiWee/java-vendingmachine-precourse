@@ -28,6 +28,29 @@ public class MachineController {
         }
     }
 
+    private void requestInputMachinePrice() {
+        Coins coins = machineService.putInitialMoney(validateMachinePrice(inputView.inputMachinePrice()));
+        outputView.printMachineHavingCoins(coins);
+    }
+
+    private void requestInputProducts() {
+        try {
+            machineService.putInitialProducts(parseProducts(inputView.inputProducts()));
+        } catch (IllegalArgumentException exception) {
+            outputView.printMessage(exception.getMessage());
+            requestInputProducts();
+        }
+    }
+
+    private void requestInputBuyingPrice() {
+        try {
+            machineService.putMoneyInMachine(validateInputPrice(inputView.inputBuyingPrice()));
+        } catch (IllegalArgumentException exception) {
+            outputView.printMessage(exception.getMessage());
+            requestInputBuyingPrice();
+        }
+    }
+
     private void requestInputBuyingProduct() {
         try {
             machineService.startBuyingProcess();
@@ -41,6 +64,10 @@ public class MachineController {
         }
     }
 
+    private void responseCurrentInputMoney() {
+        outputView.printCurrentInputMoney(machineService.findCurrentInputMoney());
+    }
+
     private void requestInputProduct() {
         machineService.buyProduct(inputView.inputProduct());
         requestInputBuyingProduct();
@@ -50,33 +77,5 @@ public class MachineController {
     private void responseLeftMoney() {
         outputView.printReturnMoney(machineService.findCurrentInputMoney(), machineService.findReturnCoins());
 
-    }
-
-    private void responseCurrentInputMoney() {
-        outputView.printCurrentInputMoney(machineService.findCurrentInputMoney());
-
-    }
-
-    private void requestInputBuyingPrice() {
-        try {
-            machineService.putMoneyInMachine(validateInputPrice(inputView.inputBuyingPrice()));
-        } catch (IllegalArgumentException exception) {
-            outputView.printMessage(exception.getMessage());
-            requestInputBuyingPrice();
-        }
-    }
-
-    private void requestInputProducts() {
-        try {
-            machineService.putInitialProducts(parseProducts(inputView.inputProducts()));
-        } catch (IllegalArgumentException exception) {
-            outputView.printMessage(exception.getMessage());
-            requestInputProducts();
-        }
-    }
-
-    private void requestInputMachinePrice() {
-        Coins coins = machineService.putInitialMoney(validateMachinePrice(inputView.inputMachinePrice()));
-        outputView.printMachineHavingCoins(coins);
     }
 }
