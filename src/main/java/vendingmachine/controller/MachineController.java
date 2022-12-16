@@ -30,8 +30,8 @@ public class MachineController {
 
     private void requestInputBuyingProduct() {
         try {
-            responseCurrentInputMoney();
             machineService.startBuyingProcess();
+            responseCurrentInputMoney();
             requestInputProduct();
         } catch (NoQuantityException | NoPossibleProductToBuyException exception) {
             responseLeftMoney();
