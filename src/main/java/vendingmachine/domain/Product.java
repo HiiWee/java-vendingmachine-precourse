@@ -68,6 +68,9 @@ public class Product {
     }
 
     public void takeQuantity() {
+        if (quantity == 0) {
+            throw new IllegalArgumentException(ErrorMessage.ZERO_QUANTITY);
+        }
         quantity--;
     }
 }

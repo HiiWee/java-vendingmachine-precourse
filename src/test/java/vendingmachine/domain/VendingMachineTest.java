@@ -23,7 +23,7 @@ class VendingMachineTest {
                 .hasMessageContaining(ErrorMessage.INVALID_USER_MONEY);
     }
 
-    @DisplayName("현재 금액이 부족할때 에외 발생 테스트")
+    @DisplayName("현재 금액이 부족할때 예외 발생 테스트")
     @Test
     void validateMachineStatus_notEnoughMoney_exception() {
         // given
@@ -36,5 +36,22 @@ class VendingMachineTest {
         // then
         Assertions.assertThatThrownBy(vendingMachine::validateMachineStatus)
                 .isInstanceOf(NoPossibleProductToBuyException.class);
+    }
+
+    @DisplayName("현재 수량이 부족할때 예외 발생 테스트")
+    @Test
+    void validateMachineStatus_notEnoughQuantity_exception() {
+        // given
+        VendingMachine vendingMachine = new VendingMachine(new Coins(List.of(Coin.COIN_500)),
+                new Products(List.of(new Product(List.of("a", "200", "1")))));
+
+        // when
+        vendingMachine.putMoney(10000);
+        vendingMachine.buyProduct("a");
+
+        // then
+        Assertions.assertThatThrownBy(() -> vendingMachine.buyProduct("a"))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining(ErrorMessage.ZERO_QUANTITY);
     }
 }

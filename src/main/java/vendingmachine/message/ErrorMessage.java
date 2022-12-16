@@ -12,6 +12,7 @@ public class ErrorMessage {
     public static final String NOT_ENOUGH_QUANTITY = "[ERROR] 상품 수량은 0개를 입력할 수 없습니다.";
     public static final String NO_PRODUCT_NAME = "[ERROR] 존재하지 않는 상품입니다.";
     public static final String NOT_ENOUGH_MONEY = "[ERROR] 현재 금액으로 해당 상품을 구매할 수 없습니다.";
+    public static final String ZERO_QUANTITY = "[ERROR] 선택한 상품은 수량이 0개입니다.";
 
     private ErrorMessage() {
     }
