@@ -12,8 +12,6 @@ public class OutputView {
     public void printMachineHavingCoins(final Coins coins) {
         System.out.println("자판기가 보유한 동전");
         Arrays.stream(Coin.values())
-                .forEach(coin -> {
-                    System.out.printf("%s원 - %d개", coin.toString(), coins.countOf(coin));
-                });
+                .forEach(coin -> System.out.printf("%s원 - %d개\n", coin.toString(), coins.countOf(coin)));
     }
 }
