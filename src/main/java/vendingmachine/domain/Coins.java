@@ -9,4 +9,10 @@ public class Coins {
     public Coins(final List<Coin> machineCoins) {
         this.machineCoins = machineCoins;
     }
+
+    public int countOf(final Coin findCoin) {
+        return (int) machineCoins.stream()
+                .filter(coin -> findCoin == coin)
+                .count();
+    }
 }

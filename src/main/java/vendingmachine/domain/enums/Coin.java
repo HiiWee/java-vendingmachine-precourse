@@ -35,4 +35,9 @@ public enum Coin {
                 .mapToInt(coin -> coin.amount)
                 .sum();
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(amount);
+    }
 }

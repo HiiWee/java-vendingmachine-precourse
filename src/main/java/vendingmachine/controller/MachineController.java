@@ -1,7 +1,9 @@
 package vendingmachine.controller;
 
+import static vendingmachine.util.InputValidator.validateMachinePrice;
+
+import vendingmachine.domain.Coins;
 import vendingmachine.service.MachineService;
-import vendingmachine.util.InputValidator;
 import vendingmachine.view.InputView;
 import vendingmachine.view.OutputView;
 
@@ -20,7 +22,7 @@ public class MachineController {
     }
 
     private void requestInputMachinePrice() {
-        machineService.putInitialMoney(InputValidator.validateMachinePrice(inputView.inputMachinePrice()));
-
+        Coins coins = machineService.putInitialMoney(validateMachinePrice(inputView.inputMachinePrice()));
+        outputView.printMachineHavingCoins(coins);
     }
 }
