@@ -20,6 +20,10 @@ public class OutputView {
     }
 
     public void printReturnMoney(final int currentInputMoney, final Coins returnCoins) {
-        System.out.println("pass");
+        printCurrentInputMoney(currentInputMoney);
+        System.out.println("잔돈");
+        Arrays.stream(Coin.values())
+                .filter(coin -> returnCoins.countOf(coin) > 0)
+                .forEach(coin -> System.out.printf("%s원 - %d개\n", coin.toString(), returnCoins.countOf(coin)));
     }
 }
