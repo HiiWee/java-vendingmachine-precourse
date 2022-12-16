@@ -24,7 +24,7 @@ public class Products {
     }
 
     public boolean isPossibleToBuy(final int currentMoney, final String inputProduct) {
-        return findProduct(inputProduct).getPrice() < currentMoney;
+        return findProduct(inputProduct).getPrice() <= currentMoney;
     }
 
     private Product findProduct(final String inputProduct) {
@@ -35,7 +35,7 @@ public class Products {
     }
 
     public void buy(final String inputProduct) {
-        findProduct(inputProduct).takeQuantity(inputProduct);
+        findProduct(inputProduct).takeQuantity();
     }
 
     public int findPrice(final String inputProduct) {

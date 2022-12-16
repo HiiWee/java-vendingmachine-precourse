@@ -67,7 +67,7 @@ public class Product {
         return name.equals(inputProduct);
     }
 
-    public void takeQuantity(final String inputProduct) {
+    public void takeQuantity() {
         quantity--;
     }
 }

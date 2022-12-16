@@ -14,4 +14,12 @@ public class OutputView {
         Arrays.stream(Coin.values())
                 .forEach(coin -> System.out.printf("%s원 - %d개\n", coin.toString(), coins.countOf(coin)));
     }
+
+    public void printCurrentInputMoney(final int currentInputMoney) {
+        System.out.printf("투입 금액: %d원\n", currentInputMoney);
+    }
+
+    public void printReturnMoney(final int currentInputMoney, final Coins returnCoins) {
+        System.out.println("pass");
+    }
 }
