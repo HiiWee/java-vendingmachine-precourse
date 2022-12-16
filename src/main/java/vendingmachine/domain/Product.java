@@ -29,6 +29,9 @@ public class Product {
         if (!isNumeric(quantity)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_QUANTITY_NUMERIC);
         }
+        if (Integer.parseInt(quantity) == 0) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_QUANTITY);
+        }
     }
 
     private void validatePrice(final String price) {
