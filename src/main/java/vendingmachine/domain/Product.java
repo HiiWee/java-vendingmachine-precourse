@@ -11,7 +11,7 @@ public class Product {
 
     private final String name;
     private final int price;
-    private final int quantity;
+    private int quantity;
 
     public Product(List<String> productInformation) {
         validate(productInformation);
@@ -61,5 +61,13 @@ public class Product {
 
     public boolean isPossibleToSell() {
         return quantity != 0;
+    }
+
+    public boolean contains(final String inputProduct) {
+        return name.equals(inputProduct);
+    }
+
+    public void takeQuantity(final String inputProduct) {
+        quantity--;
     }
 }

@@ -10,6 +10,8 @@ public class ErrorMessage {
     public static final String INVALID_QUANTITY_NUMERIC = "[ERROR] 상품 수량은 숫자마 입력해야 합니다.";
     public static final String INVALID_USER_MONEY = "[ERROR] 100이상의 금액을 투입해야 합니다.";
     public static final String NOT_ENOUGH_QUANTITY = "[ERROR] 상품 수량은 0개를 입력할 수 없습니다.";
+    public static final String NO_PRODUCT_NAME = "[ERROR] 존재하지 않는 상품입니다.";
+    public static final String NOT_ENOUGH_MONEY = "[ERROR] 현재 금액으로 해당 상품을 구매할 수 없습니다.";
 
     private ErrorMessage() {
     }

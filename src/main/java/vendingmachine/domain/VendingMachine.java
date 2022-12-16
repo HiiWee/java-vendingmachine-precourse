@@ -38,4 +38,19 @@ public class VendingMachine {
     private int findMinimumPriceOfProduct() {
         return sellProducts.findMinimumPrice();
     }
+
+    public void buyProduct(final String inputProduct) {
+        validateBuyProduct(inputProduct);
+        sellProducts.buy(inputProduct);
+        userMoney -= sellProducts.findPrice(inputProduct);
+    }
+
+    private void validateBuyProduct(final String inputProduct) {
+        if (!sellProducts.containsProduct(inputProduct)) {
+            throw new IllegalArgumentException(ErrorMessage.NO_PRODUCT_NAME);
+        }
+        if (!sellProducts.isPossibleToBuy(userMoney, inputProduct)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_MONEY);
+        }
+    }
 }

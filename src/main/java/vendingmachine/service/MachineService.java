@@ -49,8 +49,13 @@ public class MachineService {
                 .validateMachineStatus();
     }
 
+    public void buyProduct(final String inputProduct) {
+        VendingMachineRepository.find()
+                .buyProduct(inputProduct);
+    }
 
     public Coins findReturnCoins() {
         return null;
     }
+
 }

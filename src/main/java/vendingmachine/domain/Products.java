@@ -18,4 +18,27 @@ public class Products {
                 .orElseThrow(NoQuantityException::new);
     }
 
+    public boolean containsProduct(final String inputProduct) {
+        return products.stream()
+                .anyMatch(product -> product.contains(inputProduct));
+    }
+
+    public boolean isPossibleToBuy(final int currentMoney, final String inputProduct) {
+        return findProduct(inputProduct).getPrice() < currentMoney;
+    }
+
+    private Product findProduct(final String inputProduct) {
+        return products.stream()
+                .filter(product -> product.contains(inputProduct))
+                .findFirst()
+                .get();
+    }
+
+    public void buy(final String inputProduct) {
+        findProduct(inputProduct).takeQuantity(inputProduct);
+    }
+
+    public int findPrice(final String inputProduct) {
+        return findProduct(inputProduct).getPrice();
+    }
 }
