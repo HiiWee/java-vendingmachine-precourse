@@ -55,7 +55,8 @@ public class MachineService {
     }
 
     public Coins findReturnCoins() {
-        return null;
+        return VendingMachineRepository.find()
+                .getReturnCoins();
     }
 
 }

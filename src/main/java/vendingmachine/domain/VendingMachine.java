@@ -53,4 +53,8 @@ public class VendingMachine {
             throw new IllegalArgumentException(ErrorMessage.NOT_ENOUGH_MONEY);
         }
     }
+
+    public Coins getReturnCoins() {
+        return coins.createLeftCoins(userMoney);
+    }
 }
