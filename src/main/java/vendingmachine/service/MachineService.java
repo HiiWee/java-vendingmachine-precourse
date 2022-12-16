@@ -1,11 +1,12 @@
 package vendingmachine.service;
 
 import vendingmachine.domain.Coins;
+import vendingmachine.repository.CoinsRepository;
 import vendingmachine.util.RandomCoinGenerator;
 
 public class MachineService {
 
-    public void putInitialMoney(final int machinePrice) {
-        Coins coins = new Coins(RandomCoinGenerator.generateRandomCoins(machinePrice));
+    public Coins putInitialMoney(final int machinePrice) {
+        return CoinsRepository.saveCoins(new Coins(RandomCoinGenerator.generateRandomCoins(machinePrice)));
     }
 }
