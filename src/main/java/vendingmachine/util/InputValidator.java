@@ -1,9 +1,10 @@
 package vendingmachine.util;
 
+import static vendingmachine.message.ErrorMessage.INVALID_NUMERIC;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import vendingmachine.message.ErrorMessage;
 
 public class InputValidator {
 
@@ -15,7 +16,7 @@ public class InputValidator {
 
     public static int validateMachinePrice(final String userInput) {
         if (!isNumeric(userInput)) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_NUMERIC);
+            throw new IllegalArgumentException(INVALID_NUMERIC);
         }
         return Integer.parseInt(userInput);
     }
@@ -33,5 +34,12 @@ public class InputValidator {
         return Arrays.stream(inputProducts.split(FIRST_SEPARATOR))
                 .map(productInfo -> productInfo.substring(BRACKET, productInfo.length() - BRACKET))
                 .collect(Collectors.toList());
+    }
+
+    public static int validateInputPrice(final String inputBuyingPrice) {
+        if (!isNumeric(inputBuyingPrice)) {
+            throw new IllegalArgumentException(INVALID_NUMERIC);
+        }
+        return Integer.parseInt(inputBuyingPrice);
     }
 }
