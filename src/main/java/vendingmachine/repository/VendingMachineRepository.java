@@ -19,7 +19,7 @@ public class VendingMachineRepository {
         return find();
     }
 
-    private static VendingMachine find() {
+    public static VendingMachine find() {
         return store.get(MACHINE_INDEX);
     }
 }

@@ -32,4 +32,9 @@ public class MachineService {
     private void initializeVendingMachine() {
         VendingMachineRepository.save(new VendingMachine(CoinsRepository.find(), ProductsRepository.find()));
     }
+
+    public void putMoneyInMachine(final int inputMoney) {
+        VendingMachineRepository.find()
+                .putMoney(inputMoney);
+    }
 }
