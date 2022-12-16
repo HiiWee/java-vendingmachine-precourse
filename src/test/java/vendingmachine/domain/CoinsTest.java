@@ -9,6 +9,8 @@ import static vendingmachine.domain.enums.Coin.COIN_500;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class CoinsTest {
 
@@ -23,5 +25,19 @@ class CoinsTest {
 
         // then
         assertThat(count).isEqualTo(2);
+    }
+
+    @DisplayName("잔돈에 대해 코인 반환 테스트")
+    @ParameterizedTest
+    @CsvSource({"100,1", "200,2", "300,3", "500,4"})
+    void createLeftCoins(final int leftMoney, final int returnCoinCounts) {
+        // given
+        Coins coins = new Coins(List.of(COIN_100, COIN_100, COIN_100, COIN_100));
+
+        // when
+        Coins returnCoins = coins.createLeftCoins(leftMoney);
+
+        // then
+        assertThat(returnCoins.countOf(COIN_100)).isEqualTo(returnCoinCounts);
     }
 }

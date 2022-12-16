@@ -5,10 +5,10 @@ import java.util.List;
 import vendingmachine.domain.enums.Coin;
 
 public class Coins {
-    private final List<Coin> machineCoins;
+    private final List<Coin> machineCoins = new ArrayList<>();
 
     public Coins(final List<Coin> machineCoins) {
-        this.machineCoins = machineCoins;
+        this.machineCoins.addAll(machineCoins);
     }
 
     public int countOf(final Coin findCoin) {
