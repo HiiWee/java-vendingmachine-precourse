@@ -1,8 +1,14 @@
 package vendingmachine.util;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import vendingmachine.message.ErrorMessage;
 
 public class InputValidator {
+
+    public static final String FIRST_SEPARATOR = ";";
+    public static final int BRACKET = 1;
 
     private InputValidator() {
     }
@@ -21,5 +27,11 @@ public class InputValidator {
             return false;
         }
         return true;
+    }
+
+    public static List<String> parseProducts(final String inputProducts) {
+        return Arrays.stream(inputProducts.split(FIRST_SEPARATOR))
+                .map(productInfo -> productInfo.substring(BRACKET, productInfo.length() - BRACKET))
+                .collect(Collectors.toList());
     }
 }

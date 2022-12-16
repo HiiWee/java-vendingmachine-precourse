@@ -1,5 +1,6 @@
 package vendingmachine.controller;
 
+import static vendingmachine.util.InputValidator.parseProducts;
 import static vendingmachine.util.InputValidator.validateMachinePrice;
 
 import vendingmachine.domain.Coins;
@@ -15,10 +16,15 @@ public class MachineController {
     public void run() {
         try {
             requestInputMachinePrice();
+            requestInputProducts();
         } catch (IllegalArgumentException exception) {
             outputView.printMessage(exception.getMessage());
             run();
         }
+    }
+
+    private void requestInputProducts() {
+        machineService.putInitialProducts(parseProducts(inputView.inputProducts()));
     }
 
     private void requestInputMachinePrice() {
