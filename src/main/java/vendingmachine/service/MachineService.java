@@ -36,5 +36,21 @@ public class MachineService {
     public void putMoneyInMachine(final int inputMoney) {
         VendingMachineRepository.find()
                 .putMoney(inputMoney);
+
+    }
+
+    public int findCurrentInputMoney() {
+        return VendingMachineRepository.find()
+                .getCurrentMoney();
+    }
+
+    public void startBuyingProcess() {
+        VendingMachineRepository.find()
+                .validateMachineStatus();
+    }
+
+
+    public Coins findReturnCoins() {
+        return null;
     }
 }

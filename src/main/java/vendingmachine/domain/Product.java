@@ -51,4 +51,12 @@ public class Product {
         }
         return true;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public boolean isPossibleToSell() {
+        return quantity != 0;
+    }
 }

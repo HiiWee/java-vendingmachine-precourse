@@ -1,5 +1,6 @@
 package vendingmachine.domain;
 
+import vendingmachine.exception.NoPossibleProductToBuyException;
 import vendingmachine.message.ErrorMessage;
 
 public class VendingMachine {
@@ -22,5 +23,19 @@ public class VendingMachine {
         if (inputMoney < MINIMUM_MONEY) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_USER_MONEY);
         }
+    }
+
+    public int getCurrentMoney() {
+        return userMoney;
+    }
+
+    public void validateMachineStatus() {
+        if (findMinimumPriceOfProduct() > userMoney) {
+            throw new NoPossibleProductToBuyException();
+        }
+    }
+
+    private int findMinimumPriceOfProduct() {
+        return sellProducts.findMinimumPrice();
     }
 }
