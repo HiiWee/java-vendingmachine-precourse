@@ -24,7 +24,12 @@ public class MachineController {
     }
 
     private void requestInputProducts() {
-        machineService.putInitialProducts(parseProducts(inputView.inputProducts()));
+        try {
+            machineService.putInitialProducts(parseProducts(inputView.inputProducts()));
+        } catch (IllegalArgumentException exception) {
+            outputView.printMessage(exception.getMessage());
+            requestInputProducts();
+        }
     }
 
     private void requestInputMachinePrice() {

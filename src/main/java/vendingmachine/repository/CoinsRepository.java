@@ -18,7 +18,7 @@ public class CoinsRepository {
         return find();
     }
 
-    private static Coins find() {
+    public static Coins find() {
         return store.get(COIN_INDEX);
     }
 
